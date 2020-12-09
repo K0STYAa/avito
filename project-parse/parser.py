@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, Header, HTTPException
 from pydantic import BaseModel
-from typing import Optional
 import datetime
 
 from pars import parse
