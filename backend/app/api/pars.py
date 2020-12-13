@@ -7,6 +7,7 @@ URL = 'https://www.avito.ru/'
 HEADERS = {'user-agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) \
     AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 \
     Safari/537.36", 'accept': '*/*'}
+HOST = 'https://www.avito.ru'
 
 
 def get_session():
@@ -33,11 +34,35 @@ def get_content(html):
 
 
 def parse(reg: str, q: str):
-    #  reg = input() | mordoviya | moskva | simferopol | rossiya
-    #  q = input() | fifa | лыжи+беговые | книга
     html = get_html(URL+reg+"?q="+q)
     if html.status_code == 200:
-        count = get_content(html.text)
-        return count
+        return get_content(html.text)
+    else:
+        return "Error:", html.status_code
+
+
+def get_content_top(html):
+    soup = BeautifulSoup(html, 'html.parser')
+    items = soup.find_all('div', class_="iva-item-content-m2FiN")
+    res = []
+    for item in items:
+        if len(res) >= 5:
+            break
+        tmp = item.find('div', class_="iva-item-titleStep-2bjuh")
+        if tmp is None:
+            continue
+        price = item.find('span', class_="price-text-1HrJ_").get_text(strip=True)
+        res.append({
+            "link": HOST + tmp.find('a').get('href'),
+            "price": price
+        })
+
+    return res
+
+
+def parse_top(reg: str, q: str):
+    html = get_html(URL+reg+"?q="+q)
+    if html.status_code == 200:
+        return get_content_top(html.text)
     else:
         return "Error:", html.status_code

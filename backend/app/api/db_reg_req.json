@@ -1,0 +1,17 @@
+{
+    "0": {
+        "id": "0",
+        "region": "rossiya",
+        "request": "книга"
+    },
+    "1": {
+        "id": "1",
+        "region": "mordoviya",
+        "request": "fifa"
+    },
+    "3": {
+        "id": "3",
+        "region": "respublika_krym",
+        "request": "huawei"
+    }
+}

@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/:/backend/
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: uvicorn app.api.server:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    env_file:
+      - ./backend/.env
+    ports:
+      - 8000:8000
+
+  cronjobber:
+    build:
+      context: ./backend
+    volumes:
+      - ./backend/:/backend/
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+        sh -c "
+        echo '1 * * * * /backend/pars_1_h.sh' > /etc/crontabs/root
+        && crond -f"
+    env_file:
+      - ./backend/.env
