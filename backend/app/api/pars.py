@@ -51,7 +51,8 @@ def get_content_top(html):
         tmp = item.find('div', class_="iva-item-titleStep-2bjuh")
         if tmp is None:
             continue
-        price = item.find('span', class_="price-text-1HrJ_").get_text(strip=True)
+        price = item.find('span', class_="price-text-1HrJ_")
+        price = price.get_text(strip=True)
         res.append({
             "link": HOST + tmp.find('a').get('href'),
             "price": price

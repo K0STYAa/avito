@@ -100,26 +100,32 @@ def test_create_item():
 def test_get_top5_0():
     response = requests.get("http://127.0.0.1:8000/top5/0")
     assert response.status_code == 200
+    HOST = "https://www.avito.ru/"
+    link1 = "himki/knigi_i_zhurnaly/knigi_1988805852"
+    link2 = "staryy_oskol/knigi_i_zhurnaly/knigi_1929016988"
+    link3 = "sankt-peterburg/knigi_i_zhurnaly/knigi_2058761172"
+    link4 = "supseh/kollektsionirovanie/kniga_1048508440"
+    link5 = "samara/knigi_i_zhurnaly/knigi_1920650492"
     assert response.json() == {
         "1607895064.177876": [
             {
-                "link": "https://www.avito.ru/himki/knigi_i_zhurnaly/knigi_1988805852",
+                "link": HOST + link1,
                 "price": "300₽"
             },
             {
-                "link": "https://www.avito.ru/staryy_oskol/knigi_i_zhurnaly/knigi_1929016988",
+                "link": HOST + link2,
                 "price": "5₽"
             },
             {
-                "link": "https://www.avito.ru/sankt-peterburg/knigi_i_zhurnaly/knigi_2058761172",
+                "link": HOST + link3,
                 "price": "50₽"
             },
             {
-                "link": "https://www.avito.ru/supseh/kollektsionirovanie/kniga_1048508440",
+                "link": HOST + link4,
                 "price": "10 000 000₽"
             },
             {
-                "link": "https://www.avito.ru/samara/knigi_i_zhurnaly/knigi_1920650492",
+                "link": HOST + link5,
                 "price": "Бесплатно"
             }
         ]

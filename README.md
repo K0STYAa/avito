@@ -5,7 +5,8 @@ Project - parsing avito
 ## The following commands you can do with project
 
 ```
- uvicorn parser:app --reload  - run server
- pytest                       - run tests
- pep8 name.py                 - check on PEP
+ cd avito/
+ docker-compose up --build               - run server
+ python backend/app/api/test_parser.py   - run tests
+ pep8 name.py                            - check name.py on PEP
 ```
