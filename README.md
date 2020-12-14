@@ -26,6 +26,6 @@ post /stat/           - to see history of item with id between time1 and time2
 get /top5/{item_id}   - to see last top5 links for item_id
 ```
 
-Survey frequency = 1 time per hour(at 1 * * * *) for each id
-The service processes requests asynchronously
+Survey frequency = 1 time per hour(at 1 * * * *) for each id  
+The service processes requests asynchronously  
 As a region you need to submit the exact name of the region used in the search on avito
