@@ -89,6 +89,7 @@ def get_app():
 
     return app
 
+
 app = get_app()
 
 
@@ -109,7 +110,7 @@ async def root():
     return {"message": "Welcome to my app!"}
 
 
-@app.get("/stat/")
+@app.post("/stat/")
 async def parse_hist(item: Item_hist):
 
     with open('app/api/db_history_by_id.json') as f:
@@ -131,7 +132,7 @@ async def parse_hist(item: Item_hist):
 
 
 @app.get("/add/{item_id}")
-async def read_item(item_id: str):
+async def see_certain_id(item_id: str):
 
     with open('app/api/db_reg_req.json') as f:
         db_reg_req = json.load(f)
@@ -144,7 +145,7 @@ async def read_item(item_id: str):
 
 
 @app.get("/add/")
-async def see_all():
+async def see_all_id():
 
     with open('app/api/db_reg_req.json') as f:
         db_reg_req = json.load(f)

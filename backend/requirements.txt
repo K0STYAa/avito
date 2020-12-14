@@ -3,11 +3,7 @@ fastapi==0.55.1
 uvicorn==0.11.3
 pydantic==1.4
 email-validator==1.1.1
-# db
-databases[postgresql]==0.3.1
-SQLAlchemy==1.3.16
-alembic==1.4.2
-#kostya
 beautifulsoup4==4.8.0
 requests==2.25.0
 cfscrape==2.1.1
+pycodestyle==2.6.0

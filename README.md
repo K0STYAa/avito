@@ -6,7 +6,11 @@ Project - parsing avito
 
 ```
  cd avito/
- docker-compose up --build               - run server
- python backend/app/api/test_parser.py   - run tests
- pep8 name.py                            - check name.py on PEP
+
+ docker-compose up --build                  - to build and run server
+ docker-compose up --build                  - to build and run server background
+
+ docker exec -it avito_server_1 /bin/bash
+ python app/api/test_parser.py              - run tests
+ ./pep_test.sh                              - check all .py-files onpycode stile
 ```

@@ -38,7 +38,7 @@ def parse(reg: str, q: str):
     if html.status_code == 200:
         return get_content(html.text)
     else:
-        return "Error:", html.status_code
+        return {"Error": html.status_code}
 
 
 def get_content_top(html):
@@ -66,4 +66,4 @@ def parse_top(reg: str, q: str):
     if html.status_code == 200:
         return get_content_top(html.text)
     else:
-        return "Error:", html.status_code
+        return {"Error": html.status_code}
